@@ -12,7 +12,7 @@ public class HomeWork5SeleniumTest {
     public WebDriver driver;
 
     @BeforeAll
-    public static void wmsetup() {
+    public static void wmSetup() {
         WebDriverManager.chromedriver().setup();
     }
 
@@ -20,7 +20,7 @@ public class HomeWork5SeleniumTest {
     public void setUp() {
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-        log.info("Драйвер ChromeDriver starting");
+        log.info("Драйвер starting");
     }
 
     @AfterEach

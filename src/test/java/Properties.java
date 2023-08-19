@@ -3,6 +3,8 @@ public class Properties {
     public static String login = "ceyogo9446@bitvoo.com";
     public static String password = "Ceyogo9446!";
 
+
+    public static String url_lk = "https://otus.ru/lk/biography/personal/";
     public static String field_pass = "//input[@type=\'password\']";
     public static String field_email = "//input[@name='email']";
     public static String field_come_in = ".sc-11ptd2v-0>.sc-9a4spb-0";

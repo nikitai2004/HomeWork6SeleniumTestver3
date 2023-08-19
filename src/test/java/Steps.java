@@ -25,7 +25,7 @@ public class Steps {
                 .until(ExpectedConditions
                         .invisibilityOf(
                                 driver.findElement(By.xpath(Properties.field_pass))));
-        driver.get("https://otus.ru/lk/biography/personal/");
+        driver.get(Properties.url_lk);
     }
 
     static void loginInOtus(WebDriver driver) {
