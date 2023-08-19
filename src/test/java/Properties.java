@@ -60,7 +60,7 @@ public class Properties {
     public static String add_button = "//button[contains(text(),'Добавить')]";
     public static String vk = "div[class='lk-cv-block__select-options lk-cv-block__select-options_left js-custom-select-options-container'] button[title='VK']";
     public static String vk_place = "id_contact-0-value";
-    public static String vk_string ="https://vk.ru/profile/123456"
+    public static String vk_string ="https://vk.ru/profile/123456";
     public static String ok = "div[class='lk-cv-block__select-options lk-cv-block__select-options_left js-custom-select-options-container'] button[title='OK']";
     public static String ok_place  = "id_contact-1-value";
     public static String ok_string = "https://ok.ru/profile/123456";
@@ -81,44 +81,5 @@ public class Properties {
     public static String field_add_2 = "#id_experience-1-experience";
     public static String field_add_2_java = "#id_experience-1-experience > option:nth-child(8)";
     public static String field_add_2_time = "#id_experience-1-level > option:nth-child(3)";
-
-
-
-
-
-
-
-//
-//
-//    public static String field_pass = '';
-//    public static String field_pass = '';
-//    public static String field_pass = '';
-//    public static String field_pass = '';
-//    public static String field_pass = '';
-//    public static String field_pass = '';
-//    public static String field_pass = '';
-//    public static String field_pass = '';
-//    public static String field_pass = '';
-//    public static String field_pass = '';
-//    public static String field_pass = '';
-//    public static String field_pass = '';
-//    public static String field_pass = '';
-//    public static String field_pass = '';
-//    public static String field_pass = '';
-//    public static String field_pass = '';
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 }
