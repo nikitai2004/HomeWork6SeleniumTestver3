@@ -167,7 +167,7 @@ public class Steps {
         int i = 1;
         do {
             String s = Properties.delContacts1of2 + i + Properties.delContacts2of2;
-            log.info("  s  =  ");
+            log.info("  Contacts for delete found  =  ");
             log.info(s);
             if (!isDisplayed(driver, By.cssSelector(s))) {
                 break;
