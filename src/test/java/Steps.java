@@ -20,7 +20,7 @@ public class Steps {
     }
 
     static void enterToLkab(WebDriver driver) {
-        new WebDriverWait(driver, 2)
+        new WebDriverWait(driver, 5)
                 .until(ExpectedConditions
                         .invisibilityOf(
                                 driver.findElement(By.xpath(Properties.field_pass))));
@@ -35,35 +35,36 @@ public class Steps {
     }
 
     private static void Ru(WebDriver driver) {
-        new WebDriverWait(driver, 2)
+        new WebDriverWait(driver, 5)
                 .until(ExpectedConditions
                         .visibilityOf(
                                 driver.findElement(By.cssSelector(Properties.field_rus))));
         driver.findElement(By.cssSelector(Properties.field_rus)).click();
-        new WebDriverWait(driver, 2)
+        new WebDriverWait(driver, 5)
                 .until(ExpectedConditions
                         .invisibilityOf(
                                 driver.findElement(By.cssSelector(Properties.field_rus))));
     }
 
     private static void Spb(WebDriver driver) {
-        new WebDriverWait(driver, 2)
+        new WebDriverWait(driver, 5)
                 .until(ExpectedConditions.
                         visibilityOf(
                                 driver.findElement(By.xpath(Properties.field_town))));
         driver.findElement(By.xpath(Properties.field_town)).click();
-        new WebDriverWait(driver, 2)
+        new WebDriverWait(driver, 5)
                 .until(ExpectedConditions.
                         elementToBeClickable(
                                 driver.findElement(By.cssSelector(Properties.field_spb))));
         driver.findElement(By.cssSelector(Properties.field_spb)).click();
-        new WebDriverWait(driver, 2)
+        new WebDriverWait(driver, 5)
                 .until(ExpectedConditions
                         .invisibilityOf(
                                 driver.findElement(By.cssSelector(Properties.field_spb))));
     }
 
     static void fillLK(WebDriver driver) {
+        // fio
         clearAndEnter(driver, By.id(Properties.field_fname), Properties.field_fname_string);
         clearAndEnter(driver, By.id(Properties.field_lname), Properties.field_lname_string);
         clearAndEnter(driver, By.id(Properties.field_fname_latin), Properties.field_fname_latin_string);
@@ -213,7 +214,7 @@ public class Steps {
         //  Добавим еще одну строку
         driver.findElement(By.cssSelector(Properties.field_add)).click();
         driver.findElement(By.cssSelector(Properties.field_add_2)).click();
-        driver.findElement(By.cssSelector(Properties.field_add_2_java)).click();
+        driver.findElement(By.cssSelector(Properties.field_add_2_perl)).click();
         driver.findElement(By.cssSelector(Properties.field_add_2_time)).click();
     }
 }
