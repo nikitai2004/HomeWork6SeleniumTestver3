@@ -9,10 +9,12 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import settings.Properties;
 
-import static components.Components.clearAndEnter;
-
 public class PersonalPageComponents {
     private static final Logger log = LogManager.getLogger(PersonalPageComponents.class);
+
+    public static void clearAndEnter(WebDriver driver, By by, String text) {
+        driver.findElement(by).clear();
+        driver.findElement(by).sendKeys(text);    }
 
     public static void SelectRu(WebDriver driver) {
         new WebDriverWait(driver, 5)

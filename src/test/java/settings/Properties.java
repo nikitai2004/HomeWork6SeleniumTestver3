@@ -89,4 +89,6 @@ public class Properties {
     public static String field_add_2_perl = "#id_experience-1-experience > option:nth-child(8)";
     public static String field_add_2_time = "#id_experience-1-level > option:nth-child(3)";
     public static String field_add_2_time_string = "2 года";
+
+    public static String val = "value";
 }

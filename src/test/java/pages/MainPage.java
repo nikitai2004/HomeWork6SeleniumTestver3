@@ -1,12 +1,11 @@
 package pages;
 
+import components.PersonalPageComponents;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import settings.Properties;
-
-import static components.Components.clearAndEnter;
 
 public class MainPage {
     private final WebDriver driver;
@@ -24,15 +23,16 @@ public class MainPage {
     }
 
     public void enterLogin() {
-        clearAndEnter(driver, By.xpath(Properties.field_email), Properties.login);
+        PersonalPageComponents.clearAndEnter(driver, By.xpath(Properties.field_email), Properties.login);
     }
 
     public void enterPass() {
-        clearAndEnter(driver, By.xpath(Properties.field_pass), Properties.password);
+        PersonalPageComponents.clearAndEnter(driver, By.xpath(Properties.field_pass), Properties.password);
     }
 
     public void doCommit() {
         driver.findElement(By.cssSelector(Properties.field_come_in)).click();
-        new WebDriverWait(driver, 5).until(ExpectedConditions.invisibilityOf(driver.findElement(By.xpath(Properties.field_pass))));
+        new WebDriverWait(driver, 5)
+                .until(ExpectedConditions.invisibilityOf(driver.findElement(By.xpath(Properties.field_pass))));
     }
 }

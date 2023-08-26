@@ -5,7 +5,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import settings.Properties;
 
-import static components.Components.clearAndEnter;
 import static components.PersonalPageComponents.*;
 
 public class PersonalPage {

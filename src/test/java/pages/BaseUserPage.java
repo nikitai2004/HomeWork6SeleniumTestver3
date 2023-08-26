@@ -25,34 +25,5 @@ public class BaseUserPage {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(Properties.menu_lk)));
         driver.findElement(By.xpath(Properties.menu_lk)).click();
     }
-
-
-//    private final Logger log = LogManager.getLogger(MainPage.class);
-//
-//    public static void openUrl(){ driver.get(Properties.url);
-//    }
-//    public static void doLogIn() { driver.findElement(By.cssSelector(Properties.field_loginIn)).click(); }
-//
-//    public static void enterLogin() {
-//        clearAndEnter(driver, By.xpath(Properties.field_email), Properties.login);
-//    }
-//
-//    public static void enterPass() {
-//        clearAndEnter(driver, By.xpath(Properties.field_pass), Properties.password);
-//    }
-//
-//    public static void doCommit() {
-//        driver.findElement(By.cssSelector(Properties.field_come_in)).click();
-//    }
-
-
-//        new WebDriverWait(driver, 5).until(ExpectedConditions.invisibilityOf(driver.findElement(By.xpath(Properties.field_pass))));
-//
-//        WebDriverWait wait = new WebDriverWait(driver, 2);
-//        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".sc-199a3eq-0")));
-
-//        driver.findElement(By.cssSelector(".sc-199a3eq-0")).click();
-//        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[text()='Мой профиль']")));
-//        driver.findElement(By.xpath("//*[text()='Мой профиль']")).click();
 }
 

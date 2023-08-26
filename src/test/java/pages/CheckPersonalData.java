@@ -1,20 +1,63 @@
+package pages;
+
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import settings.Properties;
 
-public class Checking {
-    static void checkData(WebDriver driver) {
-        // fio
-        Assertions.assertEquals(driver.findElement(By.id(Properties.field_fname)).getAttribute("value"), Properties.field_fname_string);
-        Assertions.assertEquals(driver.findElement(By.id(Properties.field_lname)).getAttribute("value"), Properties.field_lname_string);
-        Assertions.assertEquals(driver.findElement(By.id(Properties.field_fname_latin)).getAttribute("value"), Properties.field_fname_latin_string);
-        Assertions.assertEquals(driver.findElement(By.id(Properties.field_lname_latin)).getAttribute("value"), Properties.field_lname_latin_string);
-        Assertions.assertEquals(driver.findElement(By.id(Properties.field_id_blog_name)).getAttribute("value"), Properties.field_id_blog_name_string);
-        Assertions.assertEquals(driver.findElement(By.name(Properties.field_date_of_birth)).getAttribute("value"), Properties.field_date_of_birth_string);
-        // country, town, eng
+import static components.PersonalPageComponents.clearAndEnter;
+
+public class CheckPersonalData {
+    private final WebDriver driver;
+
+    public CheckPersonalData(WebDriver driver) {
+        this.driver = driver;
+    }
+
+    public void checkFName() {
+        Assertions.assertEquals(driver.findElement(By.id(Properties.field_fname)).getAttribute(Properties.val), Properties.field_fname_string);
+    }
+
+    public void checkFNameLatin() {
+        Assertions.assertEquals(driver.findElement(By.id(Properties.field_fname_latin)).getAttribute(Properties.val), Properties.field_fname_latin_string);
+    }
+
+    public void checkLName() {
+        Assertions.assertEquals(driver.findElement(By.id(Properties.field_lname)).getAttribute(Properties.val), Properties.field_lname_string);
+    }
+
+    public void checkLNameLatin() {
+        Assertions.assertEquals(driver.findElement(By.id(Properties.field_lname_latin)).getAttribute(Properties.val), Properties.field_lname_latin_string);
+    }
+
+    public void checkBlogName() {
+     Assertions.assertEquals(driver.findElement(By.id(Properties.field_id_blog_name)).getAttribute(Properties.val), Properties.field_id_blog_name_string);
+    }
+
+    public void checkDateOfBirth() {
+        Assertions.assertEquals(driver.findElement(By.name(Properties.field_date_of_birth)).getAttribute(Properties.val), Properties.field_date_of_birth_string);
+    }
+
+    public void checkCountry() {
         Assertions.assertEquals(driver.findElement(By.xpath(Properties.field_country)).getText(), Properties.field_rus_string);
+    }
+
+    public void checkTown() {
         Assertions.assertEquals(driver.findElement(By.xpath(Properties.field_town_load)).getText(), Properties.field_town_string);
+    }
+
+    public void checkEngLevel() {
+        Assertions.assertEquals(driver.findElement(By.xpath(Properties.field_eng_level)).getText(), Properties.field_eng_level_string);
+    }
+
+
+//========== добавить в конец  PersonalPage  и  Этого  файла - ЗАКРЫТИЕ ДРАЙВЕРА !!!!!!!
+// ======== и  затем добить  проверки
+
+
+
+    public static void checkData(WebDriver driver) {
+
         Assertions.assertEquals(driver.findElement(By.xpath(Properties.field_eng_level)).getText(), Properties.field_eng_level_string);
         // relocation - radiobutton
         Assertions.assertTrue(driver.findElement(By.cssSelector(Properties.field_reloc_yes_load)).isSelected());

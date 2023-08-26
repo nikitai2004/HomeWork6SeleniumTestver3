@@ -1,8 +1,5 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
-import pages.BaseUserPage;
-import pages.MainPage;
-import pages.PersonalPage;
-import pages.SkillsPage;
+import pages.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import webDriverFactory.DriverManagerType;
@@ -13,13 +10,15 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.concurrent.TimeUnit;
 
-public class HomeWork6SeleniumTestVIT {
+public class HomeWork6SeleniumTestVIT  {
     private static final Logger log = LogManager.getLogger(HomeWork6SeleniumTestVIT.class);
-    static WebDriver driver;
+    WebDriver driver = WebDriverFactory.create(DriverManagerType.CHROME);
+
     MainPage mainPage = PageFactory.initElements(driver, MainPage.class);
     BaseUserPage baseUserPage = PageFactory.initElements(driver, BaseUserPage.class);
     PersonalPage personalPage = PageFactory.initElements(driver, PersonalPage.class);
     SkillsPage skillsPage = PageFactory.initElements(driver, SkillsPage.class);
+    CheckPersonalData checkPersonalData = PageFactory.initElements(driver, CheckPersonalData.class);
 
     @BeforeAll
     public static void wmSetup() {
@@ -28,9 +27,8 @@ public class HomeWork6SeleniumTestVIT {
         WebDriverManager.edgedriver().setup();
     }
 
-    @BeforeAll
-    public static void setUp() {
-
+    @BeforeEach
+    public void setUp() {
 //        Chrome
 //        ChromeOptions chromeOptions = new ChromeOptions();            // chrome opt
 //        chromeOptions.addArguments("--disable-notifications");  // chrome opt
@@ -38,7 +36,7 @@ public class HomeWork6SeleniumTestVIT {
 //        options.addArguments("--start-fullscreen");             // chrome opt
 //        options.addArguments("--no-sandbox");                   // chrome opt
 //        options.addArguments("--disable-dev-shm-usage");        // chrome opt
-        driver = WebDriverFactory.create(DriverManagerType.CHROME);
+ //       driver = WebDriverFactory.create(DriverManagerType.CHROME);
 //        driver = WebDriverFactory.create(DriverManagerType.CHROME, chromeOptions);
 
 //        FF
@@ -47,9 +45,9 @@ public class HomeWork6SeleniumTestVIT {
 //        driver = WebDriverFactory.create(DriverManagerType.FIREFOX, options);
 //        driver = WebDriverFactory.create(DriverManagerType.FIREFOX);
 
-        assert driver != null;
-        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-        log.info("Driver started");
+//        assert driver != null;
+//        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+//        log.info("Driver started");
     }
 
     @AfterEach
@@ -63,6 +61,12 @@ public class HomeWork6SeleniumTestVIT {
 
     @Test
     public void testLoginAndFillLK() {
+
+        driver = WebDriverFactory.create(DriverManagerType.CHROME);
+        assert driver != null;
+        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+        log.info("Driver started");
+
         // Open Otus
         mainPage.openUrl();
         // Log In
@@ -70,44 +74,53 @@ public class HomeWork6SeleniumTestVIT {
         mainPage.enterLogin();
         mainPage.enterPass();
         mainPage.doCommit();
-        // go to personal data page
-        baseUserPage.menuSelectClick();
-        baseUserPage.menuLkClick();
-        // fill personal data
-        personalPage.enterFName();
-        personalPage.enterLName();
-        personalPage.enterFNameLatin();
-        personalPage.enterLNameLatin();
-        personalPage.enterDataOfBirth();
-        personalPage.enterBlogName();
-        personalPage.selectCountry();
-        personalPage.selectedCountryRu();
-        personalPage.selectTown();
-        personalPage.selectedSpb();
-        personalPage.selectEngLevel();
-        personalPage.selectedEngLevelAdv();
-        personalPage.selectRelocation();
-        personalPage.selectFullDay();
-        personalPage.selectFlex();
-        personalPage.selectDist();
-        // del and add contacts
-        personalPage.deleteContacts();
-        personalPage.savePersonalPage();
-        skillsPage.gotoPersonalPage();
-        personalPage.fillContacts();
-        personalPage.savePersonalPage();
-        skillsPage.gotoPersonalPage();
-        personalPage.selectSexMale();
-        personalPage.enterCompany();
-        personalPage.enterPosition();
-        // del and add Experiences
-        personalPage.deleteExperience();
-        personalPage.fillExperiences();
-        personalPage.savePersonalPage();
+//        // go to personal data page
+//        baseUserPage.menuSelectClick();
+//        baseUserPage.menuLkClick();
+//        // fill personal data
+//        personalPage.enterFName();
+//        personalPage.enterLName();
+//        personalPage.enterFNameLatin();
+//        personalPage.enterLNameLatin();
+//        personalPage.enterDataOfBirth();
+//        personalPage.enterBlogName();
+//        personalPage.selectCountry();
+//        personalPage.selectedCountryRu();
+//        personalPage.selectTown();
+//        personalPage.selectedSpb();
+//        personalPage.selectEngLevel();
+//        personalPage.selectedEngLevelAdv();
+//        personalPage.selectRelocation();
+//        personalPage.selectFullDay();
+//        personalPage.selectFlex();
+//        personalPage.selectDist();
+//        // del and add contacts
+//        personalPage.deleteContacts();
+//        personalPage.savePersonalPage();
+//        skillsPage.gotoPersonalPage();
+//        personalPage.fillContacts();
+//        personalPage.savePersonalPage();
+//        skillsPage.gotoPersonalPage();
+//        personalPage.selectSexMale();
+//        personalPage.enterCompany();
+//        personalPage.enterPosition();
+//        // del and add Experiences
+//        personalPage.deleteExperience();
+//        personalPage.savePersonalPage();
+//        skillsPage.gotoPersonalPage();
+//        personalPage.fillExperiences();
+//        personalPage.savePersonalPage();
     }
 
     @Test
     public void testLoginAndCheckDataLK() {
+
+        driver = WebDriverFactory.create(DriverManagerType.CHROME);
+
+        assert driver != null;
+        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+        log.info("Driver started");
+
         // Open Otus
         mainPage.openUrl();
         // Log In
@@ -120,7 +133,32 @@ public class HomeWork6SeleniumTestVIT {
         baseUserPage.menuLkClick();
 //      Проверить, что в разделе "О себе" отображаются указанные ранее данные
 
-        Checking.checkData(driver);
+
+
+        checkPersonalData.checkFName();
+        checkPersonalData.checkFNameLatin();
+        checkPersonalData.checkLName();
+        checkPersonalData.checkLNameLatin();
+        checkPersonalData.checkBlogName();
+        checkPersonalData.checkDateOfBirth();
+        checkPersonalData.checkCountry();
+        checkPersonalData.checkTown();
+        checkPersonalData.checkEngLevel();
+//        checkPersonalData.();
+//        checkPersonalData.();
+//        checkPersonalData.();
+//        checkPersonalData.();
+//        checkPersonalData.();
+//        checkPersonalData.();
+//        checkPersonalData.();
+//        checkPersonalData.();
+//        checkPersonalData.();
+//        checkPersonalData.();
+//        checkPersonalData.();
+//        checkPersonalData.();
+//        checkPersonalData.();
+
+
     }
 
 }
