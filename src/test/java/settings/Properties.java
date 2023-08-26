@@ -1,7 +1,5 @@
 package settings;
 
-import static org.openqa.selenium.remote.BrowserType.*;
-
 public class Properties {
     public static String url = "https://otus.ru";
     public static String login = "ceyogo9446@bitvoo.com";
@@ -9,9 +7,6 @@ public class Properties {
     public static String field_email_load = "#id_email";
     public static String phone = "+7 999 999-99-99";
     public static String field_phone = "#id_phone";
-
-    public static String url_lk = "https://otus.ru/lk/biography/personal/";
-
 
     public static String field_loginIn = ".sc-mrx253-0";
     public static String field_pass = "//input[@type=\'password\']";

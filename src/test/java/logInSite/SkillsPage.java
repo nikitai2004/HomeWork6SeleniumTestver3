@@ -14,6 +14,4 @@ public class SkillsPage {
     public void gotoPersonalPage() {
         driver.findElement(By.xpath(Properties.field_pers_data)).click();
     }
-
-
 }

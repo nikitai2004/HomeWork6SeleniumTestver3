@@ -32,7 +32,7 @@ public class HomeWork6SeleniumTestVIT {
     public static void setUp() {
 
 //        Chrome
-//       ChromeOptions chromeOptions = new ChromeOptions();            // chrome opt
+//        ChromeOptions chromeOptions = new ChromeOptions();            // chrome opt
 //        chromeOptions.addArguments("--disable-notifications");  // chrome opt
 //        options.addArguments("--remote-allow-origins=*");       // chrome opt
 //        options.addArguments("--start-fullscreen");             // chrome opt
@@ -62,7 +62,7 @@ public class HomeWork6SeleniumTestVIT {
     }
 
     @Test
-    public void testLoginAndFillLK()  {
+    public void testLoginAndFillLK() {
         // Open Otus
         mainPage.openUrl();
         // Log In
@@ -104,11 +104,10 @@ public class HomeWork6SeleniumTestVIT {
         personalPage.deleteExperience();
         personalPage.fillExperiences();
         personalPage.savePersonalPage();
-        skillsPage.gotoPersonalPage();
     }
 
     @Test
-    public void testLoginAndCheckDataLK()   {
+    public void testLoginAndCheckDataLK() {
         // Open Otus
         mainPage.openUrl();
         // Log In
@@ -120,7 +119,8 @@ public class HomeWork6SeleniumTestVIT {
         baseUserPage.menuSelectClick();
         baseUserPage.menuLkClick();
 //      Проверить, что в разделе "О себе" отображаются указанные ранее данные
+
         Checking.checkData(driver);
-}
+    }
 
 }

@@ -69,15 +69,6 @@ public class PersonalPageComponents {
             }
             i++;
         } while (i < 20);
-        //save results and go back to site LK
-//        driver.findElement(By.cssSelector(Properties.field_save)).submit();
-//        driver.findElement(By.xpath(Properties.field_pers_data)).click();
-    }
-
-    private static void saveData(WebDriver driver){
-        driver.findElement(By.cssSelector(Properties.field_save)).submit();
-        driver.findElement(By.xpath(Properties.field_pers_data)).click();
-
     }
 
     public static void addContacts(WebDriver driver) {
@@ -97,9 +88,6 @@ public class PersonalPageComponents {
         driver.findElement(By.xpath(Properties.link_conn)).click();
         driver.findElement(By.cssSelector(Properties.sk)).click();
         clearAndEnter(driver, By.cssSelector(Properties.sk_place), Properties.sk_string);
-        //save results and go back to site LK
-//        driver.findElement(By.cssSelector(Properties.field_save)).submit();
-//        driver.findElement(By.xpath(Properties.field_pers_data)).click();
     }
 
     public static void delExperience(WebDriver driver) {
@@ -117,9 +105,6 @@ public class PersonalPageComponents {
             }
             i++;
         } while (i < 20);
-        //save results and go back to site LK
-        driver.findElement(By.cssSelector(Properties.field_save)).submit();
-        driver.findElement(By.xpath(Properties.field_pers_data)).click();
     }
 
     public static void addExperiences(WebDriver driver) {
@@ -134,5 +119,4 @@ public class PersonalPageComponents {
         driver.findElement(By.cssSelector(Properties.field_add_2_perl)).click();
         driver.findElement(By.cssSelector(Properties.field_add_2_time)).click();
     }
-
 }

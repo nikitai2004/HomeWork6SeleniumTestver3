@@ -118,7 +118,6 @@ public class PersonalPage {
         clearAndEnter(driver, By.id(Properties.field_pos), Properties.field_pos_name);
     }
 
-
     public void deleteExperience() {
         delExperience(driver);
     }
@@ -126,8 +125,4 @@ public class PersonalPage {
     public void fillExperiences() {
         addExperiences(driver);
     }
-
-
-
-
 }
