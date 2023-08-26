@@ -1,7 +1,7 @@
-import org.apache.logging.log4j.core.util.Assert;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import settings.Properties;
 
 public class Checking {
     static void checkData(WebDriver driver) {

@@ -1,49 +1,20 @@
+package components;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.openqa.selenium.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import settings.Properties;
 
-public class Steps {
-    private static final Logger log = LogManager.getLogger(Steps.class);
+import static components.Components.clearAndEnter;
 
-    static boolean isDisplayed(WebDriver driver, By by) {
-        try {
-            return driver.findElement(by).isDisplayed();
-        } catch (NoSuchElementException e) {
-            return false;
-        }
-    }
+public class PersonalPageComponents {
+    private static final Logger log = LogManager.getLogger(PersonalPageComponents.class);
 
-    static void openOtus(WebDriver driver) {
-        driver.get(Properties.url);
-    }
-
-    static void enterToLkab(WebDriver driver) {
-
-        new WebDriverWait(driver, 5)
-                .until(ExpectedConditions
-                        .invisibilityOf(
-                                driver.findElement(By.xpath(Properties.field_pass))));
-
-        WebDriverWait wait = new WebDriverWait(driver, 2000);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".sc-199a3eq-0")));
-        driver.findElement(By.cssSelector(".sc-199a3eq-0")).click();
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[text()='Мой профиль']")));
-        driver.findElement(By.xpath("//*[text()='Мой профиль']")).click();
-
-//        driver.get(settings.Properties.url_lk);
-    }
-
-    static void loginInOtus(WebDriver driver) {
-        driver.findElement(By.cssSelector(Properties.field_loginIn)).click();
-        clearAndEnter(driver, By.xpath(Properties.field_email), Properties.login);
-        clearAndEnter(driver, By.xpath(Properties.field_pass), Properties.password);
-        driver.findElement(By.cssSelector(Properties.field_come_in)).click();
-    }
-
-    private static void Ru(WebDriver driver) {
+    public static void SelectRu(WebDriver driver) {
         new WebDriverWait(driver, 5)
                 .until(ExpectedConditions
                         .visibilityOf(
@@ -55,12 +26,15 @@ public class Steps {
                                 driver.findElement(By.cssSelector(Properties.field_rus))));
     }
 
-    private static void Spb(WebDriver driver) {
+    public static void SelectTown(WebDriver driver) {
         new WebDriverWait(driver, 5)
                 .until(ExpectedConditions.
                         visibilityOf(
                                 driver.findElement(By.xpath(Properties.field_town))));
         driver.findElement(By.xpath(Properties.field_town)).click();
+    }
+
+    public static void SelectSpb(WebDriver driver) {
         new WebDriverWait(driver, 5)
                 .until(ExpectedConditions.
                         elementToBeClickable(
@@ -72,23 +46,63 @@ public class Steps {
                                 driver.findElement(By.cssSelector(Properties.field_spb))));
     }
 
-    static void fillLK(WebDriver driver) {
-
-
-
-
-
-
-
-
-
-
-        //Save and open Personal Data again
-        driver.findElement(By.cssSelector(Properties.field_save)).submit();
-        driver.findElement(By.xpath(Properties.field_pers_data)).click();
+    static boolean isDisplayed(WebDriver driver, By by) {
+        try {
+            return driver.findElement(by).isDisplayed();
+        } catch (NoSuchElementException e) {
+            return false;
+        }
     }
 
-    private static void delExperience(WebDriver driver) {
+    public static void delContacts(WebDriver driver) {
+        int i = 1;
+        do {
+            String s = Properties.delContacts1of2 + i + Properties.delContacts2of2;
+            log.info("  Contacts for delete found  =  ");
+            log.info(s);
+            if (!isDisplayed(driver, By.cssSelector(s))) {
+                break;
+            } else {
+                log.info("  isDispContact  =  ");
+                log.info(isDisplayed(driver, By.cssSelector(s)));
+                driver.findElement(By.cssSelector(s)).click();
+            }
+            i++;
+        } while (i < 20);
+        //save results and go back to site LK
+//        driver.findElement(By.cssSelector(Properties.field_save)).submit();
+//        driver.findElement(By.xpath(Properties.field_pers_data)).click();
+    }
+
+    private static void saveData(WebDriver driver){
+        driver.findElement(By.cssSelector(Properties.field_save)).submit();
+        driver.findElement(By.xpath(Properties.field_pers_data)).click();
+
+    }
+
+    public static void addContacts(WebDriver driver) {
+        //add new contacts
+        driver.findElement(By.xpath(Properties.link_conn)).click();
+        driver.findElement(By.cssSelector(Properties.vk)).click();
+        clearAndEnter(driver, By.id(Properties.vk_place), Properties.vk_string);
+        driver.findElement(By.xpath(Properties.add_button)).click();
+        driver.findElement(By.xpath(Properties.link_conn)).click();
+        driver.findElement(By.cssSelector(Properties.ok)).click();
+        clearAndEnter(driver, By.id(Properties.ok_place), Properties.ok_string);
+        driver.findElement(By.xpath(Properties.add_button)).click();
+        driver.findElement(By.xpath(Properties.link_conn)).click();
+        driver.findElement(By.cssSelector(Properties.tlg)).click();
+        clearAndEnter(driver, By.cssSelector(Properties.tlg_place), Properties.tlg_string);
+        driver.findElement(By.xpath(Properties.add_button)).click();
+        driver.findElement(By.xpath(Properties.link_conn)).click();
+        driver.findElement(By.cssSelector(Properties.sk)).click();
+        clearAndEnter(driver, By.cssSelector(Properties.sk_place), Properties.sk_string);
+        //save results and go back to site LK
+//        driver.findElement(By.cssSelector(Properties.field_save)).submit();
+//        driver.findElement(By.xpath(Properties.field_pers_data)).click();
+    }
+
+    public static void delExperience(WebDriver driver) {
         int i = 1;
         do {
             String s = Properties.delExp1of2 + i + Properties.delExp2of2;
@@ -108,54 +122,7 @@ public class Steps {
         driver.findElement(By.xpath(Properties.field_pers_data)).click();
     }
 
-    private static void clearAndEnter(WebDriver driver, By by, String text) {
-        driver.findElement(by).clear();
-        driver.findElement(by).sendKeys(text);
-    }
-
-    private static void delContacts(WebDriver driver) {
-        int i = 1;
-        do {
-            String s = Properties.delContacts1of2 + i + Properties.delContacts2of2;
-            log.info("  Contacts for delete found  =  ");
-            log.info(s);
-            if (!isDisplayed(driver, By.cssSelector(s))) {
-                break;
-            } else {
-                log.info("  isDispContact  =  ");
-                log.info(isDisplayed(driver, By.cssSelector(s)));
-                driver.findElement(By.cssSelector(s)).click();
-            }
-            i++;
-        } while (i < 20);
-        //save results and go back to site LK
-        driver.findElement(By.cssSelector(Properties.field_save)).submit();
-        driver.findElement(By.xpath(Properties.field_pers_data)).click();
-    }
-
-    private static void addContacts(WebDriver driver) {
-        //add new contacts
-        driver.findElement(By.xpath(Properties.link_conn)).click();
-        driver.findElement(By.cssSelector(Properties.vk)).click();
-        clearAndEnter(driver, By.id(Properties.vk_place), Properties.vk_string);
-        driver.findElement(By.xpath(Properties.add_button)).click();
-        driver.findElement(By.xpath(Properties.link_conn)).click();
-        driver.findElement(By.cssSelector(Properties.ok)).click();
-        clearAndEnter(driver, By.id(Properties.ok_place), Properties.ok_string);
-        driver.findElement(By.xpath(Properties.add_button)).click();
-        driver.findElement(By.xpath(Properties.link_conn)).click();
-        driver.findElement(By.cssSelector(Properties.tlg)).click();
-        clearAndEnter(driver, By.cssSelector(Properties.tlg_place), Properties.tlg_string);
-        driver.findElement(By.xpath(Properties.add_button)).click();
-        driver.findElement(By.xpath(Properties.link_conn)).click();
-        driver.findElement(By.cssSelector(Properties.sk)).click();
-        clearAndEnter(driver, By.cssSelector(Properties.sk_place), Properties.sk_string);
-        //save results and go back to site LK
-        driver.findElement(By.cssSelector(Properties.field_save)).submit();
-        driver.findElement(By.xpath(Properties.field_pers_data)).click();
-    }
-
-    private static void addExperiences(WebDriver driver) {
+    public static void addExperiences(WebDriver driver) {
         //  Добавим одну строку
         driver.findElement(By.cssSelector(Properties.field_add)).click();
         driver.findElement(By.cssSelector(Properties.field_add_1)).click();
@@ -167,4 +134,5 @@ public class Steps {
         driver.findElement(By.cssSelector(Properties.field_add_2_perl)).click();
         driver.findElement(By.cssSelector(Properties.field_add_2_time)).click();
     }
+
 }

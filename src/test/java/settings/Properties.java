@@ -1,3 +1,7 @@
+package settings;
+
+import static org.openqa.selenium.remote.BrowserType.*;
+
 public class Properties {
     public static String url = "https://otus.ru";
     public static String login = "ceyogo9446@bitvoo.com";
@@ -7,10 +11,16 @@ public class Properties {
     public static String field_phone = "#id_phone";
 
     public static String url_lk = "https://otus.ru/lk/biography/personal/";
+
+
     public static String field_loginIn = ".sc-mrx253-0";
     public static String field_pass = "//input[@type=\'password\']";
     public static String field_email = "//input[@name='email']";
     public static String field_come_in = ".sc-11ptd2v-0>.sc-9a4spb-0";
+
+    public static String  menu_select = ".sc-199a3eq-0";
+
+    public static String  menu_lk = "//*[text()='Мой профиль']";
     public static String field_save = "button.button_md-4:nth-child(1)";
     public static String field_pers_data = "//div[@class='nav-sidebar']//a[@title='Персональные данные']";
     public static String delExp1of2 = "div:nth-child(";
