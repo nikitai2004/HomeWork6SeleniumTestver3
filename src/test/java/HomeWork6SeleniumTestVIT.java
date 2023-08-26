@@ -1,8 +1,8 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
-import logInSite.BaseUserPage;
-import logInSite.MainPage;
-import logInSite.PersonalPage;
-import logInSite.SkillsPage;
+import pages.BaseUserPage;
+import pages.MainPage;
+import pages.PersonalPage;
+import pages.SkillsPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import webDriverFactory.DriverManagerType;
