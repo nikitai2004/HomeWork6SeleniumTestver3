@@ -1,5 +1,4 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.firefox.FirefoxOptions;
 import pages.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -11,8 +10,8 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.concurrent.TimeUnit;
 
-public class HomeWork6SeleniumTestVIT {
-    private static final Logger log = LogManager.getLogger(HomeWork6SeleniumTestVIT.class);
+public class HomeWork6SeleniumTest {
+    private static final Logger log = LogManager.getLogger(HomeWork6SeleniumTest.class);
     private static WebDriver driver;
 
     @BeforeAll
