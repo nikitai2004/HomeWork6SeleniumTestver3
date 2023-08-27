@@ -24,17 +24,17 @@ public class Properties {
     public static String delContacts2of2 = ") > div:nth-child(4) > div:nth-child(2) > button:nth-child(1)";
 
     public static String field_fname = "id_fname";
-    public static String field_fname_string = "Тест";
+    public static String field_fname_string = "Алексей";
     public static String field_lname = "id_lname";
-    public static String field_lname_string ="Тестов";
+    public static String field_lname_string ="Петров";
     public static String field_fname_latin = "id_fname_latin";
-    public static String field_fname_latin_string = "Test";
+    public static String field_fname_latin_string = "Alex";
     public static String field_lname_latin = "id_lname_latin";
-    public static String field_lname_latin_string = "Testov";
+    public static String field_lname_latin_string = "Petroff";
     public static String field_id_blog_name = "id_blog_name";
-    public static String field_id_blog_name_string = "NameTestBlog";
+    public static String field_id_blog_name_string = "AlexPetroffBlog";
     public static String field_date_of_birth = "date_of_birth";
-    public static String field_date_of_birth_string = "19.09.2019";
+    public static String field_date_of_birth_string = "12.05.2009";
     public static String field_country = "//div[@class='select lk-cv-block__input lk-cv-block__input_full js-lk-cv-dependent-master js-lk-cv-custom-select']//label//div[1]";
 
     public static String field_rus = "button[title='Россия']";
@@ -61,24 +61,24 @@ public class Properties {
     public static String field_s2 = "#id_gender > option:nth-child(2)";
     public static String field_sm = "m";
     public static String field_comp = "id_company";
-    public static String field_comp_name = "Компания Тест";
+    public static String field_comp_name = "ООО \"ХОМЯЧКИ\"";
     public static String field_pos = "id_work";
-    public static String field_pos_name = "Тестировщик";
+    public static String field_pos_name = "Главный хомяк";
 
     public static String link_conn = "//span[@class='placeholder']";
     public static String add_button = "//button[contains(text(),'Добавить')]";
     public static String vk = "div[class='lk-cv-block__select-options lk-cv-block__select-options_left js-custom-select-options-container'] button[title='VK']";
     public static String vk_place = "id_contact-0-value";
-    public static String vk_string ="https://vk.ru/profile/123456";
+    public static String vk_string ="https://vk.ru/profile/ промахнулся";
     public static String ok = "div[class='lk-cv-block__select-options lk-cv-block__select-options_left js-custom-select-options-container'] button[title='OK']";
     public static String ok_place  = "id_contact-1-value";
-    public static String ok_string = "https://ok.ru/profile/123456";
+    public static String ok_string = "https://ok.ru/profile/ тут меня нет";
     public static String tlg = "div[class='lk-cv-block__select-options lk-cv-block__select-options_left js-custom-select-options-container'] button[title='Тelegram']";
     public static String tlg_place  = "#id_contact-2-value";
-    public static String tlg_string = "TELEGRAM:123456789";
+    public static String tlg_string = "TELEGRAM: и тут не найдешь";
     public static String sk = "div[class='lk-cv-block__select-options lk-cv-block__select-options_left js-custom-select-options-container'] button[title='Skype']";
     public static String sk_place  = "#id_contact-3-value";
-    public static String sk_string = "SKYPE:123456789";
+    public static String sk_string = "SKYPE: и тут мимо";
 
     public static String field_add = "a[title='Добавить']";
     public static String field_add_1 = "#id_experience-0-experience";

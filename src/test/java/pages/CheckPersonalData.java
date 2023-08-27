@@ -50,61 +50,70 @@ public class CheckPersonalData {
         Assertions.assertEquals(driver.findElement(By.xpath(Properties.field_eng_level)).getText(), Properties.field_eng_level_string);
     }
 
-
-//========== добавить в конец  PersonalPage  и  Этого  файла - ЗАКРЫТИЕ ДРАЙВЕРА !!!!!!!
-// ======== и  затем добить  проверки
-
-
-
-    public static void checkData(WebDriver driver) {
-
-        Assertions.assertEquals(driver.findElement(By.xpath(Properties.field_eng_level)).getText(), Properties.field_eng_level_string);
-        // relocation - radiobutton
+    public void checkRelocation() {
         Assertions.assertTrue(driver.findElement(By.cssSelector(Properties.field_reloc_yes_load)).isSelected());
-        // full day
+    }
+
+    public void checkFullDay() {
         Assertions.assertTrue(driver.findElement(By.cssSelector(Properties.field_full_day_load)).isSelected());
-        // flex schedule
+    }
+
+    public void checkFlex() {
         Assertions.assertTrue(driver.findElement(By.cssSelector(Properties.field_flex_load)).isSelected());
-        // distant
+    }
+
+    public void checkDist() {
         Assertions.assertTrue(driver.findElement(By.cssSelector(Properties.field_dist_load)).isSelected());
-        //  email
-        Assertions.assertEquals(driver.findElement(By.cssSelector(Properties.field_email_load)).getAttribute("value"), Properties.login);
-        //  phone
-        Assertions.assertEquals(driver.findElement(By.cssSelector(Properties.field_phone)).getAttribute("value"), Properties.phone);
+    }
 
-        //  vk
-        Assertions.assertTrue(
-                Properties.vk_string.equals(driver.findElement(By.id("id_contact-0-value")).getAttribute("value")) ||
-                        Properties.vk_string.equals(driver.findElement(By.id("id_contact-1-value")).getAttribute("value")) ||
-                        Properties.vk_string.equals(driver.findElement(By.id("id_contact-2-value")).getAttribute("value")) ||
-                        Properties.vk_string.equals(driver.findElement(By.id("id_contact-3-value")).getAttribute("value")));
-        //  ok
-        Assertions.assertTrue(
-                Properties.ok_string.equals(driver.findElement(By.id("id_contact-0-value")).getAttribute("value")) ||
-                        Properties.ok_string.equals(driver.findElement(By.id("id_contact-1-value")).getAttribute("value")) ||
-                        Properties.ok_string.equals(driver.findElement(By.id("id_contact-2-value")).getAttribute("value")) ||
-                        Properties.ok_string.equals(driver.findElement(By.id("id_contact-3-value")).getAttribute("value")));
-        //  tlg
-        Assertions.assertTrue(
-                Properties.tlg_string.equals(driver.findElement(By.id("id_contact-0-value")).getAttribute("value")) ||
-                        Properties.tlg_string.equals(driver.findElement(By.id("id_contact-1-value")).getAttribute("value")) ||
-                        Properties.tlg_string.equals(driver.findElement(By.id("id_contact-2-value")).getAttribute("value")) ||
-                        Properties.tlg_string.equals(driver.findElement(By.id("id_contact-3-value")).getAttribute("value")));
-        //  skype
-        Assertions.assertTrue(
-                Properties.sk_string.equals(driver.findElement(By.id("id_contact-0-value")).getAttribute("value")) ||
-                        Properties.sk_string.equals(driver.findElement(By.id("id_contact-1-value")).getAttribute("value")) ||
-                        Properties.sk_string.equals(driver.findElement(By.id("id_contact-2-value")).getAttribute("value")) ||
-                        Properties.sk_string.equals(driver.findElement(By.id("id_contact-3-value")).getAttribute("value")));
+    public void checkEmail() {
+        Assertions.assertEquals(driver.findElement(By.cssSelector(Properties.field_email_load)).getAttribute(Properties.val), Properties.login);
+    }
 
-        // пол
-        Assertions.assertEquals(Properties.field_sm, driver.findElement(By.cssSelector(Properties.field_s2)).getAttribute("value"));
+    public void checkPhone() {
+        Assertions.assertEquals(driver.findElement(By.cssSelector(Properties.field_phone)).getAttribute(Properties.val), Properties.phone);
+    }
+    public void checkVK() {
+        Assertions.assertTrue(
+                Properties.vk_string.equals(driver.findElement(By.id("id_contact-0-value")).getAttribute(Properties.val)) ||
+                        Properties.vk_string.equals(driver.findElement(By.id("id_contact-1-value")).getAttribute(Properties.val)) ||
+                        Properties.vk_string.equals(driver.findElement(By.id("id_contact-2-value")).getAttribute(Properties.val)) ||
+                        Properties.vk_string.equals(driver.findElement(By.id("id_contact-3-value")).getAttribute(Properties.val)));
+    }
+
+    public void checkOK() {
+        Assertions.assertTrue(
+                Properties.ok_string.equals(driver.findElement(By.id("id_contact-0-value")).getAttribute(Properties.val)) ||
+                        Properties.ok_string.equals(driver.findElement(By.id("id_contact-1-value")).getAttribute(Properties.val)) ||
+                        Properties.ok_string.equals(driver.findElement(By.id("id_contact-2-value")).getAttribute(Properties.val)) ||
+                        Properties.ok_string.equals(driver.findElement(By.id("id_contact-3-value")).getAttribute(Properties.val)));
+    }
+
+    public void checkTlg() {
+        Assertions.assertTrue(
+                Properties.tlg_string.equals(driver.findElement(By.id("id_contact-0-value")).getAttribute(Properties.val)) ||
+                        Properties.tlg_string.equals(driver.findElement(By.id("id_contact-1-value")).getAttribute(Properties.val)) ||
+                        Properties.tlg_string.equals(driver.findElement(By.id("id_contact-2-value")).getAttribute(Properties.val)) ||
+                        Properties.tlg_string.equals(driver.findElement(By.id("id_contact-3-value")).getAttribute(Properties.val)));
+    }
+    public void checkSkype() {
+        Assertions.assertTrue(
+                Properties.sk_string.equals(driver.findElement(By.id("id_contact-0-value")).getAttribute(Properties.val)) ||
+                        Properties.sk_string.equals(driver.findElement(By.id("id_contact-1-value")).getAttribute(Properties.val)) ||
+                        Properties.sk_string.equals(driver.findElement(By.id("id_contact-2-value")).getAttribute(Properties.val)) ||
+                        Properties.sk_string.equals(driver.findElement(By.id("id_contact-3-value")).getAttribute(Properties.val)));
+    }
+    public void checkSex() {
+        Assertions.assertEquals(Properties.field_sm, driver.findElement(By.cssSelector(Properties.field_s2)).getAttribute(Properties.val));
         Assertions.assertTrue((driver.findElement(By.cssSelector(Properties.field_s2)).isSelected()));
-        //  company
-        Assertions.assertEquals(driver.findElement(By.id(Properties.field_comp)).getAttribute("value"), Properties.field_comp_name);
-        //  position
-        Assertions.assertEquals(driver.findElement(By.id(Properties.field_pos)).getAttribute("value"), Properties.field_pos_name);
-        //  exp
+    }
+    public void checkCompany() {
+        Assertions.assertEquals(driver.findElement(By.id(Properties.field_comp)).getAttribute(Properties.val), Properties.field_comp_name);
+    }
+    public void checkPos() {
+        Assertions.assertEquals(driver.findElement(By.id(Properties.field_pos)).getAttribute(Properties.val), Properties.field_pos_name);
+    }
+    public void checkExperience() {
         Assertions.assertTrue(driver.findElement(By.cssSelector(Properties.field_add_1_java)).isSelected());
         Assertions.assertEquals(Properties.field_add_1_time_string, driver.findElement(By.cssSelector(Properties.field_add_1_time)).getText());
         Assertions.assertTrue(driver.findElement(By.cssSelector(Properties.field_add_2_perl)).isSelected());
