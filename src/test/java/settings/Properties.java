@@ -91,4 +91,8 @@ public class Properties {
     public static String field_add_2_time_string = "2 года";
 
     public static String val = "value";
+    public static String val0 = "id_contact-0-value";
+    public static String val1 = "id_contact-1-value";
+    public static String val2 = "id_contact-2-value";
+    public static String val3 = "id_contact-3-value";
 }

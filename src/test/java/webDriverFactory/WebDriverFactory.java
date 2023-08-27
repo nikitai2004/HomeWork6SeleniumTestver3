@@ -12,35 +12,38 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 
 public class WebDriverFactory {
     public static WebDriver create(DriverManagerType browserName) {
-        switch (browserName.getDriver()) {
-            case "ChromeDriver":
+        return switch (browserName.getDriver()) {
+            case "ChromeDriver" -> {
                 WebDriverManager.chromedriver().setup();
-                return new ChromeDriver();
-            case "FirefoxDriver":
+                yield new ChromeDriver();
+            }
+            case "FirefoxDriver" -> {
                 WebDriverManager.firefoxdriver().setup();
-                return new FirefoxDriver();
-            case "EdgeDriver":
+                yield new FirefoxDriver();
+            }
+            case "EdgeDriver" -> {
                 WebDriverManager.edgedriver().setup();
-                return new EdgeDriver();
-            default:
-                return null;
-        }
+                yield new EdgeDriver();
+            }
+            default -> null;
+        };
     }
 
     public static WebDriver create(DriverManagerType browserName, MutableCapabilities wdOptions) {
-        switch (browserName.getDriver()) {
-            case "ChromeDriver":
+        return switch (browserName.getDriver()) {
+            case "ChromeDriver" -> {
                 WebDriverManager.chromedriver().setup();
-                return new ChromeDriver((ChromeOptions) wdOptions);
-
-            case "FirefoxDriver":
+                yield new ChromeDriver((ChromeOptions) wdOptions);
+            }
+            case "FirefoxDriver" -> {
                 WebDriverManager.firefoxdriver().setup();
-                return new FirefoxDriver((FirefoxOptions) wdOptions);
-            case "EdgeDriver":
+                yield new FirefoxDriver((FirefoxOptions) wdOptions);
+            }
+            case "EdgeDriver" -> {
                 WebDriverManager.edgedriver().setup();
-                return new EdgeDriver((EdgeOptions) wdOptions);
-            default:
-                return null;
-        }
+                yield new EdgeDriver((EdgeOptions) wdOptions);
+            }
+            default -> null;
+        };
     }
 }

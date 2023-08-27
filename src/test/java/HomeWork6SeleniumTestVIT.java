@@ -15,12 +15,6 @@ public class HomeWork6SeleniumTestVIT {
     private static final Logger log = LogManager.getLogger(HomeWork6SeleniumTestVIT.class);
     private static WebDriver driver;
 
-//    MainPage mainPage = PageFactory.initElements(driver, MainPage.class);
-//    BaseUserPage baseUserPage = PageFactory.initElements(driver, BaseUserPage.class);
-//    PersonalPage personalPage = PageFactory.initElements(driver, PersonalPage.class);
-//    SkillsPage skillsPage = PageFactory.initElements(driver, SkillsPage.class);
-//    CheckPersonalData checkPersonalData = PageFactory.initElements(driver, CheckPersonalData.class);
-
     @BeforeAll
     public static void wmSetup() {
         WebDriverManager.chromedriver().setup();
@@ -28,8 +22,17 @@ public class HomeWork6SeleniumTestVIT {
         WebDriverManager.edgedriver().setup();
     }
 
-    @BeforeAll
-    public static void setUp() {
+    @AfterEach
+    public void closeAll() {
+        if (driver != null) {
+            driver.close();
+            driver.quit();
+            log.info("Driver closed");
+        }
+    }
+
+//        ===  Готовые настройки для вариантов браузера  ====
+
 //        Chrome
 //        ChromeOptions chromeOptions = new ChromeOptions();      // chrome opt
 //        chromeOptions.addArguments("--disable-notifications");  // chrome opt
@@ -43,31 +46,8 @@ public class HomeWork6SeleniumTestVIT {
 //        FF
 //        FirefoxOptions options = new FirefoxOptions();
 //        options.addArguments("--headless");
+//        driver = WebDriverFactory.create(DriverManagerType.FIREFOX);
 //        driver = WebDriverFactory.create(DriverManagerType.FIREFOX, options);
-//         driver = WebDriverFactory.create(DriverManagerType.FIREFOX);
-
-//        driver = WebDriverFactory.create(DriverManagerType.CHROME);
-//        assert driver != null;
-//        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-//        log.info("Driver started");
-    }
-
-    @BeforeEach
-    public  void settingUp() {
-//        driver = WebDriverFactory.create(DriverManagerType.CHROME);
-//        assert driver != null;
-//        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-//        log.info("Driver started");
-    }
-
-    @AfterEach
-    public void closeAll() {
-        if (driver != null) {
-            driver.close();
-            driver.quit();
-            log.info("Driver closed");
-        }
-    }
 
     @Test
     public void testLoginAndFillLK() {
@@ -134,10 +114,6 @@ public class HomeWork6SeleniumTestVIT {
         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
         log.info("Driver started");
 
-        assert driver != null;
-        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-        log.info("Driver started");
-
         MainPage mainPage = PageFactory.initElements(driver, MainPage.class);
         BaseUserPage baseUserPage = PageFactory.initElements(driver, BaseUserPage.class);
         CheckPersonalData checkPersonalData = PageFactory.initElements(driver, CheckPersonalData.class);
@@ -177,5 +153,4 @@ public class HomeWork6SeleniumTestVIT {
         checkPersonalData.checkPos();
         checkPersonalData.checkExperience();
     }
-
 }
