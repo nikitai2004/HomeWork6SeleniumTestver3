@@ -30,24 +30,6 @@ public class HomeWork6SeleniumTest {
         }
     }
 
-//        ===  Готовые настройки для вариантов браузера  ====
-
-//        Chrome
-//        ChromeOptions chromeOptions = new ChromeOptions();      // chrome opt
-//        chromeOptions.addArguments("--disable-notifications");  // chrome opt
-//        options.addArguments("--remote-allow-origins=*");       // chrome opt
-//        options.addArguments("--start-fullscreen");             // chrome opt
-//        options.addArguments("--no-sandbox");                   // chrome opt
-//        options.addArguments("--disable-dev-shm-usage");        // chrome opt
-//        driver = WebDriverFactory.create(DriverManagerType.CHROME);
-//        driver = WebDriverFactory.create(DriverManagerType.CHROME, chromeOptions);
-
-//        FF
-//        FirefoxOptions options = new FirefoxOptions();
-//        options.addArguments("--headless");
-//        driver = WebDriverFactory.create(DriverManagerType.FIREFOX);
-//        driver = WebDriverFactory.create(DriverManagerType.FIREFOX, options);
-
     @Test
     public void testLoginAndFillLK() {
 
