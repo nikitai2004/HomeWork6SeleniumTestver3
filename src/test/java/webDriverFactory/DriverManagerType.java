@@ -1,4 +1,5 @@
 package webDriverFactory;
+
 public enum DriverManagerType {
     CHROME("ChromeDriver", "Init ChromeDriver"),
     FIREFOX("FirefoxDriver", "Init FirefoxDriver"),
@@ -8,6 +9,7 @@ public enum DriverManagerType {
     DriverManagerType(String driverName, String desc) {
         this.driverName = driverName;
     }
+
     public String getDriver() {
         return driverName;
     }

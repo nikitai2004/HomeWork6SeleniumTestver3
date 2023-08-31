@@ -7,11 +7,10 @@ import settings.Properties;
 
 import static components.PersonalPageComponents.clearAndEnter;
 
-public class CheckPersonalData {
-    private final WebDriver driver;
+public class CheckPersonalData extends BasePage{
 
     public CheckPersonalData(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
     }
 
     public void checkFName() {

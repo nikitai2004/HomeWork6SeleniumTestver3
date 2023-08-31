@@ -69,16 +69,16 @@ public class Properties {
     public static String add_button = "//button[contains(text(),'Добавить')]";
     public static String vk = "div[class='lk-cv-block__select-options lk-cv-block__select-options_left js-custom-select-options-container'] button[title='VK']";
     public static String vk_place = "id_contact-0-value";
-    public static String vk_string ="https://vk.ru/profile/ промахнулся";
+    public static String vk_string ="https://vk.ru/profile/132456";
     public static String ok = "div[class='lk-cv-block__select-options lk-cv-block__select-options_left js-custom-select-options-container'] button[title='OK']";
     public static String ok_place  = "id_contact-1-value";
-    public static String ok_string = "https://ok.ru/profile/ тут меня нет";
+    public static String ok_string = "https://ok.ru/profile/846341";
     public static String tlg = "div[class='lk-cv-block__select-options lk-cv-block__select-options_left js-custom-select-options-container'] button[title='Тelegram']";
     public static String tlg_place  = "#id_contact-2-value";
-    public static String tlg_string = "TELEGRAM: и тут не найдешь";
+    public static String tlg_string = "TELEGRAM:131853131";
     public static String sk = "div[class='lk-cv-block__select-options lk-cv-block__select-options_left js-custom-select-options-container'] button[title='Skype']";
     public static String sk_place  = "#id_contact-3-value";
-    public static String sk_string = "SKYPE: и тут мимо";
+    public static String sk_string = "SKYPE:8431351313";
 
     public static String field_add = "a[title='Добавить']";
     public static String field_add_1 = "#id_experience-0-experience";

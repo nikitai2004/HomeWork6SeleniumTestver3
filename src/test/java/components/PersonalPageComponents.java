@@ -17,24 +17,24 @@ public class PersonalPageComponents {
         driver.findElement(by).sendKeys(text);
     }
 
-    public static void SelectRu(WebDriver driver) {
+    public static void selectRu(WebDriver driver) {
         new WebDriverWait(driver, 5).until(ExpectedConditions.visibilityOf(driver.findElement(By.cssSelector(Properties.field_rus))));
         driver.findElement(By.cssSelector(Properties.field_rus)).click();
         new WebDriverWait(driver, 5).until(ExpectedConditions.invisibilityOf(driver.findElement(By.cssSelector(Properties.field_rus))));
     }
 
-    public static void SelectTown(WebDriver driver) {
+    public static void selectTownSpb(WebDriver driver) {
         new WebDriverWait(driver, 5).until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath(Properties.field_town))));
         driver.findElement(By.xpath(Properties.field_town)).click();
     }
 
-    public static void SelectSpb(WebDriver driver) {
+    public static void selectSpb(WebDriver driver) {
         new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(driver.findElement(By.cssSelector(Properties.field_spb))));
         driver.findElement(By.cssSelector(Properties.field_spb)).click();
         new WebDriverWait(driver, 5).until(ExpectedConditions.invisibilityOf(driver.findElement(By.cssSelector(Properties.field_spb))));
     }
 
-    static boolean isDisplayed(WebDriver driver, By by) {
+    public static boolean isDisplayed(WebDriver driver, By by) {
         try {
             return driver.findElement(by).isDisplayed();
         } catch (NoSuchElementException e) {
@@ -94,6 +94,7 @@ public class PersonalPageComponents {
             i++;
         } while (i < 20);
     }
+
 
     public static void addExperiences(WebDriver driver) {
         //  Добавим одну строку

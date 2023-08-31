@@ -1,17 +1,18 @@
 package pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import settings.Properties;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
-public class SkillsPage {
-    private final WebDriver driver;
+public class SkillsPage extends BasePage{
+
+    @FindBy(xpath = "//div[@class='nav-sidebar']//a[@title='Персональные данные']")
+    private WebElement gotoPPage;
 
     public SkillsPage(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
     }
 
-    public void gotoPersonalPage() {
-        driver.findElement(By.xpath(Properties.field_pers_data)).click();
+    public void gotoPersonalPage() {gotoPPage.click();
     }
 }
