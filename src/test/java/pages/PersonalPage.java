@@ -63,17 +63,17 @@ public class PersonalPage extends BasePage {
     @FindBy(id = "id_lname_latin")
     private WebElement fieldLnameLatin;
     public void enterFName() { fname.enterText((PersonalData.FIELD_FNAME_STRING.getName())); }
-    public void enterLName() { lastname.enterText(String.valueOf(PersonalData.FIELD_LNAME_STRING)); }
-    public void enterFNameLatin() { nameL.enterText(String.valueOf(PersonalData.FIELD_FNAME_LATIN_STRING)); }
-    public void enterLNameLatin() { lastnameL.enterText(String.valueOf(PersonalData.FIELD_LNAME_LATIN_STRING)); }
+    public void enterLName() { lastname.enterText(String.valueOf(PersonalData.FIELD_LNAME_STRING.getName())); }
+    public void enterFNameLatin() { nameL.enterText(String.valueOf(PersonalData.FIELD_FNAME_LATIN_STRING.getName())); }
+    public void enterLNameLatin() { lastnameL.enterText(String.valueOf(PersonalData.FIELD_LNAME_LATIN_STRING.getName())); }
 
     @FindBy(name = "date_of_birth")
     private WebElement enterDataOfBirth;
-    public void enterDataOfBirth() {enterDataOfB.enterText(String.valueOf(PersonalData.FIELD_DATE_OF_BIRTH_STRING)); }
+    public void enterDataOfBirth() {enterDataOfB.enterText(String.valueOf(PersonalData.FIELD_DATE_OF_BIRTH_STRING.getName())); }
 
     @FindBy(id = "id_blog_name")
     private WebElement enterBlogName;
-    public void enterBlogName() { enterBlogN.enterText(String.valueOf(PersonalData.FIELD_ID_BLOG_NAME_STRING)); }
+    public void enterBlogName() { enterBlogN.enterText(String.valueOf(PersonalData.FIELD_ID_BLOG_NAME_STRING.getName())); }
 
     @FindBy(xpath = "//div[@class='select lk-cv-block__input lk-cv-block__input_full js-lk-cv-dependent-master js-lk-cv-custom-select']//label//div[1]")
     private WebElement selectCountry;
@@ -227,11 +227,11 @@ public class PersonalPage extends BasePage {
 
     @FindBy(id = "id_company")
     private WebElement enterCompany;
-    public void enterCompany() {enterComp.enterText(String.valueOf(PersonalData.FIELD_COMP_NAME)); }
+    public void enterCompany() {enterComp.enterText(String.valueOf(PersonalData.FIELD_COMP_NAME.getName())); }
 
     @FindBy(id = "id_work")
     private WebElement enterPosition;
-    public void enterPosition() { enterPosit.enterText(String.valueOf(PersonalData.FIELD_POS_NAME));  }
+    public void enterPosition() { enterPosit.enterText(String.valueOf(PersonalData.FIELD_POS_NAME.getName()));  }
 
     public void deleteExperience() {
         int i = 1;
