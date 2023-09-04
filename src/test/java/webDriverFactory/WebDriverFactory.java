@@ -11,7 +11,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 
 public class WebDriverFactory {
-    public static WebDriver create(DriverManagerType browserName) {
+    public static WebDriver create(@org.jetbrains.annotations.NotNull DriverManagerType browserName) {
         return switch (browserName.getDriver()) {
             case "ChromeDriver" -> {
                 WebDriverManager.chromedriver().setup();

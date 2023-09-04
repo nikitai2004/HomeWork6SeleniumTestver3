@@ -8,7 +8,6 @@ import webDriverFactory.WebDriverFactory;
 import org.junit.jupiter.api.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
@@ -40,15 +39,15 @@ public class HomeWork6SeleniumTestVer3 {
         assert driver != null;
         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
         log.info("Driver started");
+ MainPage page = new MainPage(driver);
 
         // Open Otus
         driver.get(settings.get("url"));
-        //new MainPage(driver).openUrl();
-        new MainPage(driver).openUrl();
-        new MainPage(driver).doLogIn();
-        new MainPage(driver).enterLogin();
-        new MainPage(driver).enterPass();
-        new MainPage(driver).doCommit();
+        page.openUrl();
+        page.doLogIn();
+        page.enterLogin();
+        page.enterPass();
+        page.doCommit();
 
         // go to personal data page
         new BaseUserPage(driver).menuSelectClick();

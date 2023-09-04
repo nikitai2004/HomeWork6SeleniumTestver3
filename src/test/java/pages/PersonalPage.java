@@ -1,5 +1,7 @@
 package pages;
 
+import components.InputTextComponent;
+import data.PersonalData;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
@@ -14,17 +16,16 @@ import settings.Properties;
 public class PersonalPage extends BasePage {
     private static final Logger log = LogManager.getLogger(PersonalPage.class);
 
-    private final static String field_fname_string = "Алексей";
-    private final static String field_lname_string = "Петров";
-    private final static String field_fname_latin_string = "Alex";
-    private final static String field_lname_latin_string = "Petroff";
-    private final static String field_id_blog_name_string = "AlexPetroffBlog";
-    private final static String field_date_of_birth_string = "12.05.2009";
-    private final static String field_rus_string = "Россия";
-    private final static String field_town_string = "Санкт-Петербург";
-    private final static String field_eng_level_string = "Продвинутый (Advanced)";
-    private final static String field_comp_name = "ООО \"ХОМЯЧКИ\"";
-    private final static String field_pos_name = "Главный хомяк";
+    InputTextComponent fname;
+    InputTextComponent lastname;
+    InputTextComponent nameL;
+    InputTextComponent lastnameL;
+    InputTextComponent enterDataOfB;
+    InputTextComponent enterBlogN;
+    InputTextComponent enterComp;
+    InputTextComponent enterPosit;
+
+
     private final static String delContacts1of2 = "div.js-formset-row:nth-child(";
     private final static String delContacts2of2 = ") > div:nth-child(4) > div:nth-child(2) > button:nth-child(1)";
     private final static String delExp1of2 = "div:nth-child(";
@@ -41,69 +42,47 @@ public class PersonalPage extends BasePage {
     private final static String val2 = "id_contact-2-value";
     private final static String val3 = "id_contact-3-value";
 
+    public PersonalPage(WebDriver driver) {
+        super(driver);
+        fname = new InputTextComponent(enterFName);
+        lastname = new InputTextComponent(enterLName);
+        nameL = new InputTextComponent(fieldFnameLatin);
+        lastnameL = new InputTextComponent(fieldLnameLatin);
+        enterDataOfB = new InputTextComponent(enterDataOfBirth);
+        enterBlogN = new InputTextComponent(enterBlogName);
+        enterComp = new InputTextComponent(enterCompany);
+        enterPosit = new InputTextComponent(enterPosition);
+    }
 
     @FindBy(id = "id_fname")
     private WebElement enterFName;
-
     @FindBy(id = "id_lname")
     private WebElement enterLName;
-
     @FindBy(id = "id_fname_latin")
     private WebElement fieldFnameLatin;
-
     @FindBy(id = "id_lname_latin")
     private WebElement fieldLnameLatin;
-
-    public PersonalPage(WebDriver driver) {
-        super(driver);
-    }
-
-    public void enterFName() {
-        enterFName.clear();
-        enterFName.sendKeys(field_fname_string);
-    }
-
-    public void enterLName() {
-        enterLName.clear();
-        enterLName.sendKeys(field_lname_string);
-    }
-
-    public void enterFNameLatin() {
-        fieldFnameLatin.clear();
-        fieldFnameLatin.sendKeys(field_fname_latin_string);
-    }
-
-    public void enterLNameLatin() {
-        fieldLnameLatin.clear();
-        fieldLnameLatin.sendKeys(field_lname_latin_string);
-    }
+    public void enterFName() { fname.enterText((PersonalData.FIELD_FNAME_STRING.getName())); }
+    public void enterLName() { lastname.enterText(String.valueOf(PersonalData.FIELD_LNAME_STRING)); }
+    public void enterFNameLatin() { nameL.enterText(String.valueOf(PersonalData.FIELD_FNAME_LATIN_STRING)); }
+    public void enterLNameLatin() { lastnameL.enterText(String.valueOf(PersonalData.FIELD_LNAME_LATIN_STRING)); }
 
     @FindBy(name = "date_of_birth")
     private WebElement enterDataOfBirth;
-
-    public void enterDataOfBirth() {
-        enterDataOfBirth.clear();
-        enterDataOfBirth.sendKeys(field_date_of_birth_string);
-    }
+    public void enterDataOfBirth() {enterDataOfB.enterText(String.valueOf(PersonalData.FIELD_DATE_OF_BIRTH_STRING)); }
 
     @FindBy(id = "id_blog_name")
     private WebElement enterBlogName;
-
-    public void enterBlogName() {
-        enterBlogName.clear();
-        enterBlogName.sendKeys(field_id_blog_name_string);
-    }
+    public void enterBlogName() { enterBlogN.enterText(String.valueOf(PersonalData.FIELD_ID_BLOG_NAME_STRING)); }
 
     @FindBy(xpath = "//div[@class='select lk-cv-block__input lk-cv-block__input_full js-lk-cv-dependent-master js-lk-cv-custom-select']//label//div[1]")
     private WebElement selectCountry;
-
     public void selectCountry() {
         selectCountry.click();
     }
 
     @FindBy(css = "button[title='Россия']")
     private WebElement selectedCountryRu;
-
     public void selectedCountryRu() {
         new WebDriverWait(driver, 5).until(ExpectedConditions.visibilityOf(selectedCountryRu));
         selectedCountryRu.click();
@@ -112,48 +91,32 @@ public class PersonalPage extends BasePage {
 
     @FindBy(xpath = "//div/span[@class='placeholder']")
     private WebElement selectTown;
-
-    public void selectTown() {
-       // new WebDriverWait(driver, 5).until(ExpectedConditions.visibilityOf(selectTown));
-        selectTown.click();
-    }
+    public void selectTown() {  selectTown.click(); }
 
     @FindBy(css = "button[title='Санкт-Петербург']")
     private WebElement selectedSpb;
-
-    public void selectedSpb() {
-       // new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(selectedSpb));
-        selectedSpb.click();
-      //  new WebDriverWait(driver, 5).until(ExpectedConditions.invisibilityOf(selectedSpb));
-    }
+    public void selectedSpb() {  selectedSpb.click();  }
 
     @FindBy(xpath = "//div[contains(@class,'select lk-cv-block__input lk-cv-block__input_full js-lk-cv-custom-select')]//label//div[1]")
     private WebElement selectEngLevel;
-
     public void selectEngLevel() {
         selectEngLevel.click();
     }
 
     @FindBy(xpath = "//button[contains(@title,'Продвинутый (Advanced)')]")
     private WebElement selectedEngLevelAdv;
-
     public void selectedEngLevelAdv() {
         selectedEngLevelAdv.click();
     }
 
     @FindBy(xpath = "//span[contains(text(),'Да')]")
     private WebElement selectRelocation;
-
     public void selectRelocation() {
         selectRelocation.click();
     }
 
     @FindBy(css = "div:nth-child(1) > div:nth-child(2) > label > span")
     private WebElement selectFullDay;
-
-    @FindBy(css = "input[title=\'Полный день\']")
-    private WebElement selectFullDayLoad;
-
     public void selectFullDay() {
         selectFullDay.isSelected();
         if (!selectFullDayLoad.isSelected()) {
@@ -161,12 +124,12 @@ public class PersonalPage extends BasePage {
         }
     }
 
-    @FindBy(css = "div:nth-child(2) > div:nth-child(2) > label > span")
-    private WebElement selectFlex;
-
+    @FindBy(css = "input[title=\'Полный день\']")
+    private WebElement selectFullDayLoad;
     @FindBy(css = "input[title=\'Гибкий график\']")
     private WebElement selectFlexLoad;
-
+    @FindBy(css = "div:nth-child(2) > div:nth-child(2) > label > span")
+    private WebElement selectFlex;
     public void selectFlex() {
         selectFlex.isSelected();
         if (!selectFlexLoad.isSelected()) {
@@ -176,10 +139,8 @@ public class PersonalPage extends BasePage {
 
     @FindBy(css = "div:nth-child(3) > div:nth-child(2) > label > span")
     private WebElement selectDist;
-
     @FindBy(css = "input[title=\'Удаленно\']")
     private WebElement selectDistLoad;
-
     public void selectDist() {
         selectDist.isSelected();
         if (!selectDistLoad.isSelected()) {
@@ -189,7 +150,6 @@ public class PersonalPage extends BasePage {
 
     @FindBy(css = "button.button_md-4:nth-child(1)")
     private WebElement savePersonalPage;
-
     public void savePersonalPage() {
         savePersonalPage.submit();
     }
@@ -213,31 +173,22 @@ public class PersonalPage extends BasePage {
 
     @FindBy(xpath = "//button[contains(text(),'Добавить')]")
     private WebElement addButton;
-
     @FindBy(xpath = "//span[@class='placeholder']")
     private WebElement addContact;
-
     @FindBy(css = "div[class='lk-cv-block__select-options lk-cv-block__select-options_left js-custom-select-options-container'] button[title='VK']")
     private WebElement vkContact;
-
     @FindBy(id = "id_contact-0-value")
     private WebElement vkPlace;
-
     @FindBy(css = "div[class='lk-cv-block__select-options lk-cv-block__select-options_left js-custom-select-options-container'] button[title='OK']")
     private WebElement okContact;
-
     @FindBy(id = "id_contact-1-value")
     private WebElement okPlace;
-
     @FindBy(css = "div[class='lk-cv-block__select-options lk-cv-block__select-options_left js-custom-select-options-container'] button[title='Тelegram']")
     private WebElement tlgContact;
-
     @FindBy(id = "id_contact-2-value")
     private WebElement tlgPlace;
-
     @FindBy(css = "div[class='lk-cv-block__select-options lk-cv-block__select-options_left js-custom-select-options-container'] button[title='Skype']")
     private WebElement skContact;
-
     @FindBy(id = "id_contact-3-value")
     private WebElement skPlace;
 
@@ -265,10 +216,8 @@ public class PersonalPage extends BasePage {
 
     @FindBy(css = "#id_gender > option:nth-child(2)")
     private WebElement selectSexMale2;
-
     @FindBy(css = "#id_gender")
     private WebElement selectSexMale;
-
     public void selectSexMale() {
         if (!selectSexMale2.isSelected()) {
             selectSexMale.click();
@@ -278,19 +227,11 @@ public class PersonalPage extends BasePage {
 
     @FindBy(id = "id_company")
     private WebElement enterCompany;
-
-    public void enterCompany() {
-        enterCompany.clear();
-        enterCompany.sendKeys(field_comp_name);
-    }
+    public void enterCompany() {enterComp.enterText(String.valueOf(PersonalData.FIELD_COMP_NAME)); }
 
     @FindBy(id = "id_work")
     private WebElement enterPosition;
-
-    public void enterPosition() {
-        enterPosition.clear();
-        enterPosition.sendKeys(field_pos_name);
-    }
+    public void enterPosition() { enterPosit.enterText(String.valueOf(PersonalData.FIELD_POS_NAME));  }
 
     public void deleteExperience() {
         int i = 1;
@@ -312,25 +253,18 @@ public class PersonalPage extends BasePage {
 
     @FindBy(css = "a[title='Добавить']")
     private WebElement fieldAdd;
-
     @FindBy(css = "#id_experience-0-experience")
     private WebElement fieldAdd1;
-
     @FindBy(css = "#id_experience-0-experience > option:nth-child(3)")
     private WebElement fieldAdd1Java;
-
     @FindBy(css = "#id_experience-0-level > option:nth-child(2)")
     private WebElement fieldAdd1Time;
-
     @FindBy(css = "#id_experience-1-experience")
     private WebElement fieldAdd2;
-
     @FindBy(css = "#id_experience-1-experience > option:nth-child(8)")
     private WebElement fieldAdd2Perl;
-
     @FindBy(css = "#id_experience-1-level > option:nth-child(3)")
     private WebElement fieldAdd2Time;
-
     public void fillExperiences() {
         fieldAdd.click();
         fieldAdd1.click();
@@ -349,4 +283,9 @@ public class PersonalPage extends BasePage {
             return false;
         }
     }
+// проверки -
+   // Assertions.assertEquals(name.getText, field_fname_string )=====================================================
+
+
+
 }
