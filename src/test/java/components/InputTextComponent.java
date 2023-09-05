@@ -26,4 +26,7 @@ public class InputTextComponent {
         return element.getText();
     }
 
+    public String getAttribute(String val) {
+       return element.getAttribute(val);
+    }
 }

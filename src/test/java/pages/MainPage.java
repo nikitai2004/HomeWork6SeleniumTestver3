@@ -20,12 +20,14 @@ public class MainPage extends BasePage {
 
     @FindBy(css = ".sc-mrx253-0")
     private WebElement doLogIn;
+
     public void doLogIn() {
         doLogIn.click();
     }
 
     @FindBy(xpath = "//input[@name='email']")
     private WebElement enterLogin;
+
     public void enterLogin() {
         enterLogin.clear();
         enterLogin.sendKeys(settings.get("strlogin"));
@@ -33,13 +35,15 @@ public class MainPage extends BasePage {
 
     @FindBy(xpath = "//input[@type=\'password\']")
     private WebElement enterPass;
+
     public void enterPass() {
         enterPass.clear();
         enterPass.sendKeys(settings.get("strpassword"));
     }
 
-        @FindBy(css = ".sc-11ptd2v-0>.sc-9a4spb-0")
+    @FindBy(css = ".sc-11ptd2v-0>.sc-9a4spb-0")
     private WebElement commit;
+
     public void doCommit() {
         commit.click();
     }

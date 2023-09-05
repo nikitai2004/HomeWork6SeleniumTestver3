@@ -19,14 +19,11 @@ public class PropertiesReader implements ISettings {
             properties.load(input);
 
             for (Map.Entry<Object, Object> entry : properties.entrySet()) {
-                props.put(
-                        entry.getKey().toString(),
-                        entry.getValue().toString());
+                props.put(entry.getKey().toString(), entry.getValue().toString());
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
         return props;
     }
 }

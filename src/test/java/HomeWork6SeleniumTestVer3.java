@@ -1,13 +1,13 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
 import pages.*;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.PageFactory;
 import settings.PropertiesReader;
 import webDriverFactory.DriverManagerType;
 import webDriverFactory.WebDriverFactory;
 import org.junit.jupiter.api.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
@@ -34,13 +34,14 @@ public class HomeWork6SeleniumTestVer3 {
 
     @Test
     public void testLoginAndFillLK() {
-
         driver = WebDriverFactory.create(DriverManagerType.CHROME);
         assert driver != null;
-        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         log.info("Driver started");
- MainPage page = new MainPage(driver);
-
+        MainPage page = new MainPage(driver);
+        BaseUserPage baseUserPage = new BaseUserPage(driver);
+        PersonalPage personalPage = new PersonalPage(driver);
+        SkillsPage skillsPage = new SkillsPage(driver);
         // Open Otus
         driver.get(settings.get("url"));
         page.openUrl();
@@ -48,44 +49,42 @@ public class HomeWork6SeleniumTestVer3 {
         page.enterLogin();
         page.enterPass();
         page.doCommit();
-
         // go to personal data page
-        new BaseUserPage(driver).menuSelectClick();
-        new BaseUserPage(driver).menuLkClick();
-
+        baseUserPage.menuSelectClick();
+        baseUserPage.menuLkClick();
         // fill personal data
-        new PersonalPage(driver).enterFName();
-        new PersonalPage(driver).enterLName();
-        new PersonalPage(driver).enterFNameLatin();
-        new PersonalPage(driver).enterLNameLatin();
-        new PersonalPage(driver).enterDataOfBirth();
-        new PersonalPage(driver).selectCountry();
-        new PersonalPage(driver).selectedCountryRu();
-        new PersonalPage(driver).enterBlogName();
-        new PersonalPage(driver).selectTown();
-        new PersonalPage(driver).selectedSpb();
-        new PersonalPage(driver).selectEngLevel();
-        new PersonalPage(driver).selectedEngLevelAdv();
-        new PersonalPage(driver).selectRelocation();
-        new PersonalPage(driver).selectFullDay();
-        new PersonalPage(driver).selectFlex();
-        new PersonalPage(driver).selectDist();
+        personalPage.enterFName();
+        personalPage.enterLName();
+        personalPage.enterFNameLatin();
+        personalPage.enterLNameLatin();
+        personalPage.enterDataOfBirth();
+        personalPage.selectCountry();
+        personalPage.selectedCountryRu();
+        personalPage.enterBlogName();
+        personalPage.selectTown();
+        personalPage.selectedSpb();
+        personalPage.selectEngLevel();
+        personalPage.selectedEngLevelAdv();
+        personalPage.selectRelocation();
+        personalPage.selectFullDay();
+        personalPage.selectFlex();
+        personalPage.selectDist();
         // del and add contacts
-        new PersonalPage(driver).deleteContacts();
-        new PersonalPage(driver).savePersonalPage();
-        new SkillsPage(driver).gotoPersonalPage();
-        new PersonalPage(driver).fillContacts();
-        new PersonalPage(driver).savePersonalPage();
-        new SkillsPage(driver).gotoPersonalPage();
-        new PersonalPage(driver).selectSexMale();
-        new PersonalPage(driver).enterCompany();
-        new PersonalPage(driver).enterPosition();
+        personalPage.deleteContacts();
+        personalPage.savePersonalPage();
+        skillsPage.gotoPersonalPage();
+        personalPage.fillContacts();
+        personalPage.savePersonalPage();
+        skillsPage.gotoPersonalPage();
+        personalPage.selectSexMale();
+        personalPage.enterCompany();
+        personalPage.enterPosition();
         // del and add Experiences
-        new PersonalPage(driver).deleteExperience();
-        new PersonalPage(driver).savePersonalPage();
-        new SkillsPage(driver).gotoPersonalPage();
-        new PersonalPage(driver).fillExperiences();
-        new PersonalPage(driver).savePersonalPage();
+        personalPage.deleteExperience();
+        personalPage.savePersonalPage();
+        skillsPage.gotoPersonalPage();
+        personalPage.fillExperiences();
+        personalPage.savePersonalPage();
     }
 
     @Test
@@ -94,44 +93,42 @@ public class HomeWork6SeleniumTestVer3 {
         assert driver != null;
         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
         log.info("Driver started");
-
-        MainPage mainPage = PageFactory.initElements(driver, MainPage.class);
-        BaseUserPage baseUserPage = PageFactory.initElements(driver, BaseUserPage.class);
-        CheckPersonalData checkPersonalData = PageFactory.initElements(driver, CheckPersonalData.class);
-
+        MainPage page = new MainPage(driver);
+        BaseUserPage baseUserPage = new BaseUserPage(driver);
+        PersonalPage personalPage = new PersonalPage(driver);
         // Open Otus
- //       mainPage.openUrl();
-        // Log In
-        mainPage.doLogIn();
-        mainPage.enterLogin();
-        mainPage.enterPass();
-        mainPage.doCommit();
+        driver.get(settings.get("url"));
+        page.openUrl();
+        page.doLogIn();
+        page.enterLogin();
+        page.enterPass();
+        page.doCommit();
         // go to personal data page
         baseUserPage.menuSelectClick();
         baseUserPage.menuLkClick();
         // checking personal data
-        checkPersonalData.checkFName();
-        checkPersonalData.checkFNameLatin();
-        checkPersonalData.checkLName();
-        checkPersonalData.checkLNameLatin();
-        checkPersonalData.checkBlogName();
-        checkPersonalData.checkDateOfBirth();
-        checkPersonalData.checkCountry();
-        checkPersonalData.checkTown();
-        checkPersonalData.checkEngLevel();
-        checkPersonalData.checkRelocation();
-        checkPersonalData.checkFullDay();
-        checkPersonalData.checkFlex();
-        checkPersonalData.checkDist();
-        checkPersonalData.checkEmail();
-        checkPersonalData.checkPhone();
-        checkPersonalData.checkVK();
-        checkPersonalData.checkOK();
-        checkPersonalData.checkTlg();
-        checkPersonalData.checkSkype();
-        checkPersonalData.checkSex();
-        checkPersonalData.checkCompany();
-        checkPersonalData.checkPos();
-        checkPersonalData.checkExperience();
+        personalPage.checkFName();
+        personalPage.checkFNameLatin();
+        personalPage.checkLName();
+        personalPage.checkLNameLatin();
+        personalPage.checkBlogName();
+        personalPage.checkDateOfBirth();
+        personalPage.checkCountry();
+        personalPage.checkTown();
+        personalPage.checkEngLevel();
+        personalPage.checkRelocation();
+        personalPage.checkFullDay();
+        personalPage.checkFlex();
+        personalPage.checkDist();
+        personalPage.checkEmail();
+        personalPage.checkPhone();
+        personalPage.checkVK();
+        personalPage.checkOK();
+        personalPage.checkTlg();
+        personalPage.checkSkype();
+        personalPage.checkSex();
+        personalPage.checkCompany();
+        personalPage.checkPos();
+        personalPage.checkExperience();
     }
 }
