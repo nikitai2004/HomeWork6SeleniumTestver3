@@ -333,7 +333,6 @@ public class PersonalPage extends BasePage {
         Assertions.assertEquals(enterDataOfB.getAttribute(ConstantData.VAL.getName()), PersonalData.FIELD_DATE_OF_BIRTH_STRING.getName());
     }
 
-
     public void checkCountry() {
         Assertions.assertEquals(driver.findElement(By.xpath(ConstantData.FIELD_COUNTRY.getName())).getText(), PersonalData.FIELD_RUS_STRING.getName());
     }

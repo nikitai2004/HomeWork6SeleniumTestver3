@@ -2,7 +2,6 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import pages.*;
 import org.openqa.selenium.WebDriver;
 import settings.PropertiesReader;
-import webDriverFactory.DriverManagerType;
 import webDriverFactory.WebDriverFactory;
 import org.junit.jupiter.api.*;
 import org.apache.logging.log4j.LogManager;
@@ -34,7 +33,7 @@ public class HomeWork6SeleniumTestVer3 {
 
     @Test
     public void testLoginAndFillLK() {
-        driver = WebDriverFactory.create(DriverManagerType.CHROME);
+        driver = WebDriverFactory.create(WebDriverFactory.DriverManagerType.CHROME);
         assert driver != null;
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         log.info("Driver started");
@@ -89,7 +88,7 @@ public class HomeWork6SeleniumTestVer3 {
 
     @Test
     public void testLoginAndCheckDataLK() {
-        driver = WebDriverFactory.create(DriverManagerType.CHROME);
+        driver = WebDriverFactory.create(WebDriverFactory.DriverManagerType.CHROME);
         assert driver != null;
         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
         log.info("Driver started");
