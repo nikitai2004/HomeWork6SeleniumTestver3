@@ -10,8 +10,8 @@ import org.apache.logging.log4j.Logger;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
-public class HomeWork6SeleniumTestVer3 {
-    private static final Logger log = LogManager.getLogger(HomeWork6SeleniumTestVer3.class);
+public class HomeWork6SeleniumVer3Test {
+    private static final Logger log = LogManager.getLogger(HomeWork6SeleniumVer3Test.class);
     private final Map<String, String> settings = new PropertiesReader().read();
     private static WebDriver driver;
 
